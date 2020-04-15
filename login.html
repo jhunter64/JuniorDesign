@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<link href="fontawesome-free-5.11.2-web/css/all.css" rel="stylesheet">
+		<!-- used by all pages -->
+		<title>PlantLanta</title>
+		<link rel="stylesheet" href="styles.css">
+		<!-- individual page JavaScript -->
+		<script type="text/javascript" src="login.js"></script>
+	</head>
+	<body background="atl_background.jpg">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid topNav">
+				<a href="login.html"><img src="plantlanta_logo.png" class="logo"></img></a>
+				<a href="login.html"><i class="far fa-envelope"></i> News</a>
+				<a href="login.html"><i class="fas fa-users-cog"></i> About</a>
+				<a href="login.html"><i class="fas fa-dollar-sign"></i> Donate</a>
+				<a href="login.html"><i class="far fa-address-book"></i> Contact</a>
+				<a href="login.html" id="navSwitch"><i class="fas fa-key"></i> Login/Sign Up</a>
+			</div>
+		</nav>
+		<h2 style="margin-bottom: 30px;">Have an existing account?</h2>
+		<form class="center" id="loginForm">
+			Email Address<br><input type="text" id="email"><br>
+			Password<br><input type="text" id="password"><br>
+			<button class="loginButton" onclick="login('email', 'password')">Log In</button>
+			<a href="login.html"><h5>Forgot Password?</h5></a>
+		</form>
+		<h2>Don't have an account?</h2><br>
+		<div class="center">
+			<button id="createAccountButton">Create Account</button>
+		</div>
+	</body>
+</html>
