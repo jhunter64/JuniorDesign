@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import Home from './components/Home';
 import ContactUs from './components/ContactUs';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (

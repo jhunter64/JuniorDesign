@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, InputGroup, FormControl, Col } from 'react-bootstrap';
+import { Form, Button, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/SignUpPage.css'
 
@@ -7,18 +7,18 @@ import './css/SignUpPage.css'
 class SignUpPage extends React.Component{
   render() {
     return (
-      <div>
+      <div className="parentDiv">
         <br/><br/>
         <h2>Sign Up</h2>
         <Form className="form-login">
           <Form.Row>
             <Form.Group as={Col} controlId="firstName">
-              <Form.Label>Full Name</Form.Label>
+              <Form.Label>First Name</Form.Label>
               <Form.Control type="firstName" placeholder="First Name" />
             </Form.Group>
 
             <Form.Group as={Col} controlId="lastName">
-              <Form.Label> </Form.Label>
+              <Form.Label>Last Name</Form.Label>
               <Form.Control type="lastName" placeholder="Last Name" />
             </Form.Group>
           </Form.Row>
@@ -45,12 +45,12 @@ class SignUpPage extends React.Component{
 
           <Form.Row>
             <Form.Group as={Col} controlId="date">
-              <Form.Label>Birthday</Form.Label>
+              <Form.Label>.</Form.Label>
               <Form.Control type="text" placeholder="Date"/>
             </Form.Group>
 
             <Form.Group as={Col} controlId="month">
-              <Form.Label></Form.Label>
+              <Form.Label>Birthday</Form.Label>
               <Form.Control as="select" defaultValue="Month">
                 <option>Month</option>
                 <option>January</option>
@@ -69,7 +69,7 @@ class SignUpPage extends React.Component{
             </Form.Group>
 
             <Form.Group as={Col} controlId="year">
-              <Form.Label></Form.Label>
+              <Form.Label>.</Form.Label>
               <Form.Control type="text" placeholder="Year" />
             </Form.Group>
           </Form.Row>

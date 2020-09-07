@@ -1,7 +1,7 @@
 import React from 'react';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './css/NavBar.css';
 
 
 class NavBar extends React.Component{
@@ -11,10 +11,10 @@ class NavBar extends React.Component{
 
     return (
       <div class="container">
-        <Navbar bg="transparent" expand="lg" fixed="top">
+        <Navbar className = "nav" bg="white" expand="lg" fixed="top">
           <Navbar.Brand href="/">
             <img
-              alt=""
+              alt="PlantLanta Logo"
               src="/plantlanta_logo.png"
               width="50"
               height="50"

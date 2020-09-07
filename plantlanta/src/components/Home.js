@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron, Button, Image } from 'react-bootstrap';
+import { Jumbotron, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Home.css';
 

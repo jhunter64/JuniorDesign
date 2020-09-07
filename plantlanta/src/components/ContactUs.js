@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron, Button, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import './css/ContactUs.css'
 
 
