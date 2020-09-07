@@ -27,7 +27,7 @@ class NavBar extends React.Component{
             </Nav>
 
             <Nav>
-              <Nav.Link href="#link">About Us</Nav.Link>
+              <Nav.Link href="/aboutus">About Us</Nav.Link>
               <NavDropdown title="Get Involved" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Volunteer</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Donate</NavDropdown.Item>
