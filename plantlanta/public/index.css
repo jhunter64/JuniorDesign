@@ -1,0 +1,12 @@
+body {
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: black;
+	color: white;
+	background-attachment: fixed;
+	padding-top: 10%;
+}
+
+* {
+   color:  white;
+}
