@@ -9,21 +9,6 @@ import AboutUs from './components/AboutUs';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { apiResponse: "" };
-    }
-
-    callAPI() {
-        fetch("http://localhost:9000/events")
-            .then(res => res.text())
-            .then(res => this.setState({ apiResponse: res }))
-            .catch(err => err);
-    }
-
-    componentDidMount() {
-        this.callAPI();
-    }
 
     render() {
         return (
@@ -48,8 +33,7 @@ class App extends Component {
                             <Home />
                         </Route>
                     </Switch>
-                </Router>
-            <p>RESPONSE: {this.state.apiResponse}</p>
+                </Router>            
             </div>
         );
     }
