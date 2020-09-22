@@ -1,0 +1,19 @@
+.card {
+  background: rgba(234, 236, 239, .5);
+  width: 50%;
+  margin: 0 auto;
+}
+.text {
+  color: black;
+}
+.logos {
+  width: 5%;
+  height: auto;
+}
+.jumbotron {
+    width: 70%;
+    height: 20%;
+    margin: 0 auto;
+    background: url('/public/skyline.jpg');
+}
+
