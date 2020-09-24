@@ -22,16 +22,8 @@ class Volunteer extends React.Component{
 
   render() {
 
-    const event_names = ["tier 1", "tier 2", "tier 3"];
-    const event_dates = ["tier 1", "tier 2", "tier 3"];
-    const event_descriptions = ["tier 1", "tier 2", "tier 3"];
-    var events = [
-      { date: '12/1/2011', event: 'name1', description: 'description1' },
-      { date: '13/1/2011', event: 'name2', description: 'description2' },
-      { date: '14/1/2011', event: 'name3', description: 'description3' }
-    ];
     const event_cards = []
-    for (let i = 0; i < events.length; i++) {
+    for (let i = 0; i < this.state.events.length; i++) {
       event_cards.push(
           <div>
             <EventCard
