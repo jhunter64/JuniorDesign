@@ -1,7 +1,8 @@
-.card {
-  background: rgba(234, 236, 239, .5);
+.eventCard {
+  background: white;
   width: 50%;
   margin: 0 auto;
+
 }
 .text {
   color: black;

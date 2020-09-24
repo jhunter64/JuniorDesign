@@ -3,74 +3,54 @@ import { Card, Image } from 'react-bootstrap';
 import { Jumbotron, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Volunteer.css'
-
+import EventCard from './EventCard';
 
 
 class Volunteer extends React.Component{
 
+  state = {
+    //this is where the API call would go instead of this list
+    events: [
+              { date: '12/1/2011', event: 'name1', description: 'description1' },
+              { date: '13/1/2011', event: 'name2', description: 'description2' },
+              { date: '14/1/2011', event: 'name3', description: 'description3' }
+            ]
+  };
+
+
+
+
   render() {
+
+    const event_names = ["tier 1", "tier 2", "tier 3"];
+    const event_dates = ["tier 1", "tier 2", "tier 3"];
+    const event_descriptions = ["tier 1", "tier 2", "tier 3"];
+    var events = [
+      { date: '12/1/2011', event: 'name1', description: 'description1' },
+      { date: '13/1/2011', event: 'name2', description: 'description2' },
+      { date: '14/1/2011', event: 'name3', description: 'description3' }
+    ];
+    const event_cards = []
+    for (let i = 0; i < events.length; i++) {
+      event_cards.push(
+          <div>
+            <EventCard
+              eventName = {this.state.events[i]["event"]}
+              eventDate = {this.state.events[i]["date"]}
+              eventDescription={this.state.events[i]["description"]}
+            />
+            <p> </p>
+          </div>
+
+      );
+    }
 
     return (
       <div>
-        <Jumbotron>
-          <h2 className = "text" align="center">Upcoming Events</h2>
-        </Jumbotron>
+        <h2 className = "text" align="center">Upcoming Events</h2>
         <br />
+        {event_cards}
 
-        <>
-        <Card>
-            <Card.Header as="h5">Event 1 Date</Card.Header>
-            <Card.Body>
-                <Card.Title>Event 1 Name</Card.Title>
-                <Card.Text>
-                    Enter a description of the event here
-                </Card.Text>
-                <Button variant="primary">Sign Up</Button>
-            </Card.Body>
-        </Card>
-        <br />
-
-        <Card>
-            <Card.Header as="h5">Event 2 Date</Card.Header>
-            <Card.Body>
-                <Card.Title>Event 2 Name</Card.Title>
-                <Card.Text>
-                    Enter a description of the event here
-                </Card.Text>
-                <Button variant="primary">Sign Up</Button>
-            </Card.Body>
-        </Card>
-        <br />
-
-        <Card>
-            <Card.Header as="h5">Event 3 Date</Card.Header>
-            <Card.Body>
-                <Card.Title>Event 3 Name</Card.Title>
-                <Card.Text>
-                    Enter a description of the event here
-                </Card.Text>
-                <Button variant="primary">Sign Up</Button>
-            </Card.Body>
-        </Card>
-        <br />
-        </>
-
-
-
-
-
-
-
-        <div class="card">
-            <div class="card-body">
-                <h5 className="text">If you have any questions or concerns, feel free to contact us!</h5>
-                <h6  className="text">Email: <a href="mailto:volunteer@iamplantlanta.com" class="card-link">volunteer@iamplantlanta.com</a></h6>
-                <a href="https://www.facebook.com/PlantLANTA" target="_blank" class="card-link">
-                    <Image className="logos" src="facebook-icon.png"/> </a>
-                <a href="https://www.instagram.com/officialplantlanta/" target="_blank" class="card-link">
-                    <Image className="logos" src="ig-icon.png"/></a>
-            </div>
-        </div>
       </div>
 
     );
