@@ -66,6 +66,7 @@ router.post("/", function(req, res, next) {
             var db = client.db('PlantLanta');
             var collection = db.collection('Users');
             collection.insertOne(req.body);
+            res.send(200);
             client.close();
         }
     });

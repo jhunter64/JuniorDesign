@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/LoginPage.css'
@@ -12,7 +12,8 @@ class LoginPage extends React.Component {
         this.state = {
             email: '',
             password: '',
-            isLoggedIn: '',
+            isLoggedIn: false,
+            failedLogin: false,
             popup: false
         };
 
@@ -44,7 +45,8 @@ class LoginPage extends React.Component {
                 <br/>
                 <h2>Don't have an account?</h2>
                 <a href="/signup"><Button variant="light" id="createAccountButton">Create Account</Button></a>
-                {this.state.popup ? <Popup toggle={this.togglePopup} /> : null}
+                {this.state.isLoggedIn ? <p>Success!</p> : null}
+                {this.state.failedLogin ? <p>Try again!</p> : null}
             </div>
         );
     }
@@ -53,15 +55,18 @@ class LoginPage extends React.Component {
     logIn(event) {
         axios.post('http://localhost:9000/users/logIn', {email: this.state.email, password: this.state.password})
             .then(function() {
-                localStorage.setItem('isLoggedIn', true);
+                console.log('NO ERROR');
+                sessionStorage.setItem('isLoggedIn', true);
                 window.location = '/';
+            }).catch(function(error) {
+                console.log(error);
+                sessionStorage.setItem('isLoggedIn', false);
             });
         event.preventDefault();
     }
 
 
     updateEmail(event) {
-        console.log('updating email');
         this.setState({
             email: event.target.value
         });
@@ -69,15 +74,9 @@ class LoginPage extends React.Component {
 
 
     updatePassword(event) {
-        console.log('updating password');
         this.setState({
             password: event.target.value
         });
-    }
-
-
-    togglePopup() {
-        console.log('Toggling popup');
     }
 }
 

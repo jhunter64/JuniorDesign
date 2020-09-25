@@ -27,8 +27,6 @@ class Home extends React.Component {
                 <a href="/aboutus"><Button variant="primary">Learn more</Button></a>
                 <br></br><br></br>
             </p>
-            <p>Logged In</p>
-            <p>{localStorage.getItem('isLoggedIn')}</p>
             </Jumbotron>
         );
     }
