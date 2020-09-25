@@ -12,7 +12,7 @@ class LoginPage extends React.Component {
         this.state = {
             email: '',
             password: '',
-            isLoggedIn: false,
+            isLoggedIn: sessionStorage.getItem('isLoggedIn'),
             failedLogin: false,
             popup: false
         };
@@ -24,6 +24,7 @@ class LoginPage extends React.Component {
         return (
             <div>
                 <br/> <br/>
+                {this.state.failedLogin ? <Alert variant='danger'><p>Login Failed. Try Again!</p></Alert> : null}
                 <h2>Have an existing account?</h2>
                 <Form className="form-login" onSubmit={this.logIn}>
                     <Form.Group controlId="formBasicEmail">
@@ -45,8 +46,6 @@ class LoginPage extends React.Component {
                 <br/>
                 <h2>Don't have an account?</h2>
                 <a href="/signup"><Button variant="light" id="createAccountButton">Create Account</Button></a>
-                {this.state.isLoggedIn ? <p>Success!</p> : null}
-                {this.state.failedLogin ? <p>Try again!</p> : null}
             </div>
         );
     }
@@ -54,11 +53,13 @@ class LoginPage extends React.Component {
 
     logIn(event) {
         axios.post('http://localhost:9000/users/logIn', {email: this.state.email, password: this.state.password})
-            .then(function() {
+            .then(() => {
+                this.loginSuccess();
                 console.log('NO ERROR');
                 sessionStorage.setItem('isLoggedIn', true);
                 window.location = '/';
-            }).catch(function(error) {
+            }).catch((error) => {
+                this.loginFail();
                 console.log(error);
                 sessionStorage.setItem('isLoggedIn', false);
             });
@@ -76,6 +77,24 @@ class LoginPage extends React.Component {
     updatePassword(event) {
         this.setState({
             password: event.target.value
+        });
+    }
+
+
+    loginSuccess() {
+        console.log('login success');
+        this.setState({
+            isLoggedIn: true,
+            failedLogin: false
+        });
+    }
+
+
+    loginFail() {
+        console.log('login fail');
+        this.setState({
+            isLoggedIn: false,
+            failedLogin: true
         });
     }
 }
