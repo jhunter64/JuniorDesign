@@ -2,10 +2,17 @@ import React from 'react';
 import { Jumbotron, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Home.css';
+import axios from 'axios'
 
 
 
 class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+    
+    }
 
     render() {
 
@@ -18,11 +25,11 @@ class Home extends React.Component {
             </p>
             <p>
                 <a href="/aboutus"><Button variant="primary">Learn more</Button></a>
+                <br></br><br></br>
             </p>
             </Jumbotron>
         );
     }
-
 }
 
 export default Home;
