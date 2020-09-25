@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
+import Popup from 'reactjs-popup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/LoginPage.css'
 import axios from 'axios'
-
 
 
 class LoginPage extends React.Component {
@@ -12,7 +12,8 @@ class LoginPage extends React.Component {
         this.state = {
             email: '',
             password: '',
-            isLoggedIn: ''
+            isLoggedIn: '',
+            popup: false
         };
 
         this.logIn = this.logIn.bind(this);
@@ -43,6 +44,7 @@ class LoginPage extends React.Component {
                 <br/>
                 <h2>Don't have an account?</h2>
                 <a href="/signup"><Button variant="light" id="createAccountButton">Create Account</Button></a>
+                {this.state.popup ? <Popup toggle={this.togglePopup} /> : null}
             </div>
         );
     }
@@ -71,6 +73,11 @@ class LoginPage extends React.Component {
         this.setState({
             password: event.target.value
         });
+    }
+
+
+    togglePopup() {
+        console.log('Toggling popup');
     }
 }
 
