@@ -12,8 +12,7 @@ class Home extends React.Component {
         super(props);
         this.state = {isToggleOn: true};
     
-        this.clickedButton = this.clickedButton.bind(this);
-      }
+    }
 
     render() {
 
@@ -27,21 +26,12 @@ class Home extends React.Component {
             <p>
                 <a href="/aboutus"><Button variant="primary">Learn more</Button></a>
                 <br></br><br></br>
-                <Button variant="primary" onClick={this.clickedButton}>Create New User</Button>
             </p>
+            <p>Logged In</p>
+            <p>{localStorage.getItem('isLoggedIn')}</p>
             </Jumbotron>
         );
     }
-
-    clickedButton() {
-        console.log("\n\nCLICKED BUTTON\n\n");
-        axios.post('http://localhost:9000/users', {username: 'newuser', password: 'newpassword'})
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            });
-    }
-
 }
 
 export default Home;
