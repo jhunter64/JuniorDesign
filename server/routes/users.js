@@ -25,6 +25,36 @@ router.get("/", function(req, res, next) {
     });
 });
 
+router.post("/logIn/", function(req, res, next) {
+    MongoClient.connect(uri, { useNewUrlParser: true }, {useUnifiedTopology: true }, function(err, client) {
+        if (err) {
+            console.log('ERROR CONNECTING TO MONGO');
+            res.send(404);
+        } else {
+            var db = client.db('PlantLanta');
+            var collection = db.collection('Users');
+            var email = req.body.email;
+            var password = req.body.password;
+            console.log('body: ', req.body);
+            console.log('email: ', email);
+            console.log('password: ', password);
+            collection.findOne({email: email, password: password}, function(err, result) {
+                if (err) {
+                    console.log(err);
+                    throw err;
+                } else if (result) {
+                    console.log('Matching user found--logging in');
+                    res.send(result);
+                } else {
+                    console.log('No matching user found');
+                    res.send(404);
+                }
+            });
+            client.close();
+        }
+    });
+});
+
 router.post("/", function(req, res, next) {
     MongoClient.connect(uri, { useNewUrlParser: true }, {useUnifiedTopology: true }, function(err, client) {
         if (err) {
@@ -36,6 +66,7 @@ router.post("/", function(req, res, next) {
             var db = client.db('PlantLanta');
             var collection = db.collection('Users');
             collection.insertOne(req.body);
+            res.send(200);
             client.close();
         }
     });
