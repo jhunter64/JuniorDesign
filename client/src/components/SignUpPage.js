@@ -91,7 +91,13 @@ class SignUpPage extends React.Component{
             </Form.Group>
           </Form.Row>
 
+          
 
+          <Form.Group controlId="newsletter">
+            <input id="newsletterCheck" type="checkbox"/>
+            &nbsp;
+            <Form.Label for="newsletterCheck">Sign up for newsletter</Form.Label>
+          </Form.Group>
 
           <Button variant="light" type="submit">
             Submit
