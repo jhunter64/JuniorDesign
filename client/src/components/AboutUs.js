@@ -29,7 +29,7 @@ class AboutUs extends React.Component {
             <Jumbotron>
             <h2 className = "text" align="left">Our Mission</h2>
             <p className = "text" align="left">
-                We're a nonprofit community organization working to create an educational platform that inspires, encourages, and motivates children & young adults in the Metro Atlanta area to promote food and environmental justice in our urban communities.
+                We're a nonprofit community organization working to create an educational platform that inspires, encourages, and motivates children & young adults in the Metro Atlanta area to promote food, environmental, and social justice in our urban communities.
             </p>
             </Jumbotron>
             <br/><br/>
