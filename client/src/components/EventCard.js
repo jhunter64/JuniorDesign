@@ -13,6 +13,14 @@ interface Props {
 
 class EventCard extends React.Component<Props>{
 
+  handleClick() {
+    if (true) {
+      window.location = "/signupconfirmation";
+    } else {
+      window.location = "/loginpage";
+    }
+  }
+
   render() {
 
     return (
@@ -25,7 +33,7 @@ class EventCard extends React.Component<Props>{
                 <Card.Text className = "text">
                     {this.props.eventDescription}
                 </Card.Text>
-                <Button variant="primary">Sign Up</Button>
+                <Button variant="primary" onClick={() => this.handleClick()}>Sign Up</Button>
             </Card.Body>
         </Card>
 
