@@ -14,7 +14,7 @@ class SignUpConfirmation extends React.Component{
           <h1 className='text' align='center'>Sign Up Confirmation</h1>
         </Jumbotron>
 
-        <h3><br></br>Thank you for signing up for this event and making a difference with PlantLanta!<br></br><br></br></h3>
+        <h3><br></br>Thank you for registering for this event and making a difference with PlantLanta!<br></br><br></br></h3>
 
         <div class="card2">
           <div class="card-body">
