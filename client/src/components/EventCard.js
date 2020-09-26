@@ -14,7 +14,7 @@ interface Props {
 class EventCard extends React.Component<Props>{
 
   handleClick() {
-    if (true) {
+    if (sessionStorage.getItem('isLoggedIn')) {
       window.location = "/signupconfirmation";
     } else {
       window.location = "/loginpage";
