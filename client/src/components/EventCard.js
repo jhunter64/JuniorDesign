@@ -8,6 +8,7 @@ interface Props {
   eventName?: string;
   eventDate?: string;
   eventDescription?: string;
+  eventLocation?: string;
 }
 
 
@@ -27,9 +28,10 @@ class EventCard extends React.Component<Props>{
       <div>
 
         <Card className = "eventCard">
-            <Card.Header className = "text">{this.props.eventName}</Card.Header>
+            <Card.Header className = "text"><h2 className = "text">{this.props.eventName}</h2></Card.Header>
             <Card.Body>
                 <Card.Title className = "text">{this.props.eventDate}</Card.Title>
+                <Card.Text className = "text">{this.props.eventLocation}</Card.Text>
                 <Card.Text className = "text">
                     {this.props.eventDescription}
                 </Card.Text>
