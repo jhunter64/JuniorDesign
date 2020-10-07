@@ -38,7 +38,6 @@ class AboutUs extends React.Component {
             <h2>Our Staff</h2>
             <p> ... </p>
             <h2>Our Events</h2>
-            <p>{this.state.events}</p>
             </div>
 
         );
