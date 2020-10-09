@@ -27,8 +27,23 @@ class Home extends React.Component {
                 <a href="/aboutus"><Button variant="primary">Learn more</Button></a>
                 <br></br><br></br>
             </p>
+            <p>
+                <a href="/aboutus"><Button variant="primary" onClick={this.makeDelete}>DELETE Event</Button></a>
+                <br></br><br></br>
+            </p>
             </Jumbotron>
         );
+    }
+
+
+    makeDelete(event) {
+        axios.delete('http://localhost:9000/events/5f8079abef8b6e1ac48a2f71')
+            .then(() => {
+                console.log('NO ERROR');
+            }).catch((error) => {
+                console.log(error);
+            });
+        event.preventDefault();
     }
 }
 
