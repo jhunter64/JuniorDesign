@@ -30,7 +30,7 @@ class NavBar extends React.Component{
               <Nav.Link href="/aboutus">About Us</Nav.Link>
               <NavDropdown title="Get Involved" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/volunteer">Volunteer</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Donate</NavDropdown.Item>
+                <NavDropdown.Item href="/donate">Donate</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/contactus">Contact Us</Nav.Link>
               <Nav.Link href="/loginpage">Login</Nav.Link>

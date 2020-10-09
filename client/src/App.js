@@ -8,6 +8,7 @@ import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import Volunteer from './components/Volunteer';
 import SignUpConfirmation from './components/SignUpConfirmation';
+import Donate from './components/Donate';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -36,6 +37,9 @@ class App extends Component {
                         </Route>
                         <Route path='/signupconfirmation'>
                             <SignUpConfirmation/>
+                        </Route>
+                        <Route path="/donate" component={Donate}>
+                          <Donate/>
                         </Route>
                         <Route path="/">
                             <Home />
