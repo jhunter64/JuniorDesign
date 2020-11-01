@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import Popup from 'reactjs-popup';
+//import Popup from 'reactjs-popup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/LoginPage.css'
 import axios from 'axios'
@@ -53,11 +53,19 @@ class LoginPage extends React.Component {
 
     logIn(event) {
         axios.post('http://localhost:9000/users/logIn', {email: this.state.email, password: this.state.password})
-            .then(() => {
+            .then((res) => {
                 this.loginSuccess();
+                console.log("userId");
+                console.log(res.data._id);
+                if (res.data.admin) {
+                    sessionStorage.setItem('isAdmin', true);
+                } else {
+                    sessionStorage.setItem('isAdmin', false);
+                    sessionStorage.setItem('userID', res.data._id);
+                }
                 console.log('NO ERROR');
                 sessionStorage.setItem('isLoggedIn', true);
-                window.location = '/';
+                // window.location = '/';
             }).catch((error) => {
                 this.loginFail();
                 console.log(error);
