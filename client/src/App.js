@@ -11,6 +11,7 @@ import AboutUs from './components/AboutUs';
 import Volunteer from './components/Volunteer';
 import SignUpConfirmation from './components/SignUpConfirmation';
 import Donate from './components/Donate';
+import NewEvent from './components/NewEvent'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -30,6 +31,9 @@ class App extends Component {
                         </Route>
                         <Route path="/loginpage">
                             <LoginPage />
+                        </Route>
+                        <Route path="/newevent">
+                            <NewEvent />
                         </Route>
                         <Route path="/signup">
                             <SignUpPage />
