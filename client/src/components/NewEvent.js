@@ -36,7 +36,7 @@ class NewEvent extends React.Component{
 
                         <Form.Group as={Col} controlId="Date">
                         <Form.Label>Date</Form.Label>
-                        <Form.Control type="date" placeholder="Event Date" onChange={event => this.updateDate(event)}/>
+                        <Form.Control type="date/time" placeholder="Event Date" onChange={event => this.updateDate(event)}/>
                         </Form.Group>
                     </Form.Row>
 
@@ -50,11 +50,13 @@ class NewEvent extends React.Component{
                         <Form.Control type="description" placeholder="Event Description" onChange={event => this.updateDescription(event)}/>
                     </Form.Group>
 
-                        <a href="/volunteer"><Button variant="light" type="submit">
+                        <a href="/volunteer"><Button variant="primary" type="submit">
                             Submit
                         </Button></a>
-
                     </Form>
+                    <Form.Group>
+                        <a href="/volunteer"><Button variant="light">Return to Events</Button></a>
+                    </Form.Group>
 
                 <br/> <br/>
             </div>
