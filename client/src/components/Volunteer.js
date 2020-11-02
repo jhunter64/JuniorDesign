@@ -74,7 +74,7 @@ class Volunteer extends React.Component{
       <div>
         <h2 className = "Events" align="center">Upcoming Events</h2>
         <br />
-        {this.state.events}
+        {events}
       </div>
     );
   }
