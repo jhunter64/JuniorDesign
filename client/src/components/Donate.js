@@ -20,7 +20,7 @@ class Donate extends React.Component{
           <h1 className='text' align='center'>Donate</h1>
         </Jumbotron>
         <Button variant="primary" onClick={() => this.handleShow()}>Donate as Organization</Button>
-        <Modal show={this.state.show} onHide={() => this.handleClose()} className="modal" size="lg">
+        <Modal show={this.state.show} onHide={() => this.handleClose()} dialogClassName="donate-modal" size="lg">
           <Modal.Header className="header" closeButton>
             <Modal.Title className="text-modal">Donate as Organization</Modal.Title>
           </Modal.Header>
