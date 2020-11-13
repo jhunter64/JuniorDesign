@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Jumbotron, Form, Button, Alert } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/LoginPage.css'
@@ -14,6 +14,7 @@ class LoginPage extends React.Component {
             password: '',
             isLoggedIn: sessionStorage.getItem('isLoggedIn'),
             failedLogin: false,
+            isAdmin: sessionStorage.getItem('isAdmin'),
             popup: false
         };
 
@@ -21,40 +22,69 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <br/> <br/>
-                {this.state.failedLogin ? <Alert variant='danger'><p>Login Failed. Try Again!</p></Alert> : null}
-                <h2>Have an existing account?</h2>
-                <Form className="form-login" onSubmit={this.logIn}>
-                    <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={event => this.updateEmail(event)}/>
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicPassword">
-                    <Form.Label htmlFor="inputPassword5">Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={event => this.updatePassword(event)}/>
-                    </Form.Group>
-                    <Button variant="light" type="submit">
-                    Log In
-                    </Button>
+        if (this.state.isLoggedIn) {
+            console.log(this.state.isLoggedIn);
+            console.log(sessionStorage.getItem('isLoggedIn'));
+            if (this.state.isAdmin) {
+                return (
+                    <div>
+                        <Jumbotron>
+                        <h2 className = "text" align="left">Successfully Logged In As Admin</h2>
+                        <a href="/"><h5 className="link">Sign Out</h5></a>
+                        </Jumbotron>
+                    </div>
+                );
+            } else {
+                return (
+                    <div>
+                        <Jumbotron>
+                        <h2 className = "text" align="left">Successfully Logged In</h2>
+                        <a href="/"><h5 className="link">Sign Out</h5></a>
+                        </Jumbotron>
+                    </div>
+                );
+            }
+        } else {
+            return (
+                <div>
                     <br/> <br/>
-                    <a href="#link"><h5 className="link">Forgot Password?</h5></a>
-                </Form>
-
-                <br/>
-                <h2>Don't have an account?</h2>
-                <a href="/signup"><Button variant="light" id="createAccountButton">Create Account</Button></a>
-            </div>
-        );
+                    {this.state.failedLogin ? <Alert variant='danger'><p>Login Failed. Try Again!</p></Alert> : null}
+                    <h2>Have an existing account?</h2>
+                    <Form className="form-login" onSubmit={this.logIn}>
+                        <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" value={this.state.email} onChange={event => this.updateEmail(event)}/>
+                        </Form.Group>
+    
+                        <Form.Group controlId="formBasicPassword">
+                        <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={event => this.updatePassword(event)}/>
+                        </Form.Group>
+                        <Button variant="light" type="submit">
+                        Log In
+                        </Button>
+                        <br/> <br/>
+                        <a href="#link"><h5 className="link">Forgot Password?</h5></a>
+                    </Form>
+    
+                    <br/>
+                    <h2>Don't have an account?</h2>
+                    <a href="/signup"><Button variant="light" id="createAccountButton">Create Account</Button></a>
+                </div>
+            );
+        }
     }
 
 
     logIn(event) {
         axios.post('http://localhost:9000/users/logIn', {email: this.state.email, password: this.state.password})
-            .then(() => {
+            .then((res) => {
                 this.loginSuccess();
+                if (res.data.admin) {
+                    sessionStorage.setItem('isAdmin', true);
+                } else {
+                    sessionStorage.setItem('isAdmin', false);
+                }
                 console.log('NO ERROR');
                 sessionStorage.setItem('isLoggedIn', true);
                 window.location = '/';

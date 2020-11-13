@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import LoginPage from './components/LoginPage';
+import Login from './components/Login';
+import Logout from './components/Logout';
 import SignUpPage from './components/SignUpPage';
 import Home from './components/Home';
 import ContactUs from './components/ContactUs';
@@ -9,6 +11,7 @@ import AboutUs from './components/AboutUs';
 import Volunteer from './components/Volunteer';
 import SignUpConfirmation from './components/SignUpConfirmation';
 import Donate from './components/Donate';
+import NewEvent from './components/NewEvent'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -20,8 +23,17 @@ class App extends Component {
                 </NavBar>
                 <Router>
                     <Switch>
+                        <Route path="/login">
+                            <Login />
+                        </Route>
+                        <Route path="/logout">
+                            <Logout />
+                        </Route>
                         <Route path="/loginpage">
                             <LoginPage />
+                        </Route>
+                        <Route path="/newevent">
+                            <NewEvent />
                         </Route>
                         <Route path="/signup">
                             <SignUpPage />
