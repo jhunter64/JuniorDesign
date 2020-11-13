@@ -22,15 +22,18 @@ function Login() {
     );
   };
 
+  const divStyle = {
+    color: 'black'
+  };
+
   return (
-    <div>
+    <div style={divStyle}>
       <GoogleLogin
         clientId={clientId}
         buttonText="Login With Google"
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
-        style={{color: "black"}}
         isSignedIn={true}
       />
     </div>

@@ -4,6 +4,25 @@ import Popup from 'reactjs-popup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/LoginPage.css'
 import axios from 'axios'
+import { GoogleLogin } from 'react-google-login';
+// refresh token
+import { refreshTokenSetup } from '../utils/refreshToken';
+
+const clientId = '256519258823-2bdp5g0mkg20qfivubvrvts024bhtqia.apps.googleusercontent.com';
+
+const clientSecret = 'oLQn8p-irej6EXhw7wuuZbrr';
+
+const onSuccess = (res) => {
+    console.log('Login Success: currentUser:', res.profileObj);
+    sessionStorage.setItem('isLoggedIn', true);
+    window.location.reload();
+    refreshTokenSetup(res);
+};
+  
+const onFailure = (res) => {
+    console.log(`Login failed: res:`, res);
+    alert('Failed to login');
+};
 
 
 class LoginPage extends React.Component {
@@ -66,7 +85,15 @@ class LoginPage extends React.Component {
                         <br/> <br/>
                         <a href="#link"><h5 className="link">Forgot Password?</h5></a>
                     </Form>
-    
+                    <h2>Log In With Google</h2>
+                    <GoogleLogin
+                        clientId={clientId}
+                        buttonText="Login With Google"
+                        onSuccess={onSuccess}
+                        onFailure={onFailure}
+                        cookiePolicy={'single_host_origin'}
+                        isSignedIn={false}
+                    />
                     <br/>
                     <h2>Don't have an account?</h2>
                     <a href="/signup"><Button variant="light" id="createAccountButton">Create Account</Button></a>
@@ -80,6 +107,8 @@ class LoginPage extends React.Component {
         axios.post('http://localhost:9000/users/logIn', {email: this.state.email, password: this.state.password})
             .then((res) => {
                 this.loginSuccess();
+                console.log("userId");
+                console.log(res.data._id);
                 if (res.data.admin) {
                     sessionStorage.setItem('isAdmin', true);
                 } else {
@@ -87,7 +116,7 @@ class LoginPage extends React.Component {
                 }
                 console.log('NO ERROR');
                 sessionStorage.setItem('isLoggedIn', true);
-                window.location = '/';
+                // window.location = '/';
             }).catch((error) => {
                 this.loginFail();
                 console.log(error);
