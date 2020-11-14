@@ -14,8 +14,10 @@ class AboutUs extends React.Component {
           show: false,
           missionText: '',
           historyText: '',
-          staffText: ''
+          staffText: '',
+          cols: ''
         };
+        window.addEventListener("resize", this.update);
     }
 
     callAPI() {
@@ -48,6 +50,7 @@ class AboutUs extends React.Component {
           .catch(error => this.setState({
             text: "didn't work"
           }));
+          this.update();
     }
 
     render() {
@@ -56,6 +59,7 @@ class AboutUs extends React.Component {
           <div>
           <Jumbotron>
           <Button variant="info" onClick={() => this.handleShow()}>Edit</Button>
+          <br></br><br></br>
           <h2 className = "text" align="left">Our Mission</h2>
           <p className = "text" align="left">
               {this.state.missionText}
@@ -66,15 +70,15 @@ class AboutUs extends React.Component {
             </Modal.Header>
             <Modal.Body className="text-modal">You can only make changes to one section at a time, so make sure to save your changes when you're done editing a section!<br></br><br></br>
               To edit the Mission Statement information, make changes to the text in the box below:<br></br><br></br>
-              <textarea id="mission-textbox" className="update-textbox" rows="5" cols="160">{this.state.missionText}</textarea>
+              <textarea id="mission-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.missionText}</textarea>
               <Button variant="secondary" onClick={() => this.handleSave(0)}>Save Changes</Button>
               <br></br><br></br>
               To edit the History information, make changes to the text in the box below:<br></br><br></br>
-              <textarea id="history-textbox" className="update-textbox" rows="5" cols="160">{this.state.historyText}</textarea>
+              <textarea id="history-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.historyText}</textarea>
               <Button variant="secondary" onClick={() => this.handleSave(1)}>Save Changes</Button>
               <br></br><br></br>
               To edit the Staff information, make changes to the text in the box below:<br></br><br></br>
-              <textarea id="staff-textbox" className="update-textbox" rows="5" cols="160">{this.state.staffText}</textarea>
+              <textarea id="staff-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.staffText}</textarea>
               <Button variant="secondary" onClick={() => this.handleSave(2)}>Save Changes</Button>
               <br></br><br></br>
             </Modal.Body>
@@ -156,6 +160,14 @@ class AboutUs extends React.Component {
       this.setState({
         show: true
       });
+    }
+
+    update = () => {
+      var width = window.innerWidth;
+      width = (width * 0.096);
+      this.setState({
+        cols: width
+      })
     }
 
 }

@@ -14,8 +14,9 @@ class Home extends React.Component {
           isToggleOn: true,
           show: false,
           text: '',
+          cols: ''
         };
-
+        window.addEventListener("resize", this.update);
     }
 
     componentDidMount() {
@@ -26,6 +27,7 @@ class Home extends React.Component {
         .catch(error => this.setState({
           text: "didn't work"
         }));
+        this.update();
     }
 
     render() {
@@ -33,6 +35,7 @@ class Home extends React.Component {
           return (
               <Jumbotron>
                 <Button variant="info" onClick={() => this.handleShow()}>Edit</Button>
+                <br></br><br></br>
                 <h2 className = "text" align="left">Our Mission</h2>
                 <p className = "text" align="left">
                   {this.state.text}
@@ -45,7 +48,7 @@ class Home extends React.Component {
                       <Modal.Title className="text-modal">Edit Information</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="text-modal">To edit the information on this page, make changes to the text in the box below:<br></br><br></br>
-                      <textarea id="textbox" className="update-textbox" rows="10" cols="160">{this.state.text}</textarea>
+                      <textarea id="textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.text}</textarea>
                     </Modal.Body>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={() => this.handleSave()}>Save Changes</Button>
@@ -53,7 +56,6 @@ class Home extends React.Component {
                     </Modal.Footer>
                   </Modal>
                 </p>
-                <div> className="bg" </div>
               </Jumbotron>
             );
         } else {
@@ -92,6 +94,14 @@ class Home extends React.Component {
           text: "didn't work"
         }));
         window.location = "/";
+    }
+
+    update = () => {
+      var width = window.innerWidth;
+      width = (width * 0.1);
+      this.setState({
+        cols: width
+      })
     }
 }
 

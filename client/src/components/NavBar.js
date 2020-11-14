@@ -12,16 +12,17 @@ class NavBar extends React.Component{
     return (
       <div class="container">
         <Navbar className = "nav" bg="white" expand="lg" fixed="top">
-          <Navbar.Brand href="/">
-            <img
-              alt="PlantLanta Logo"
-              src="/plantlanta_logo.png"
-              width="50"
-              height="50"
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
-
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Navbar.Brand href="/">
+              <img
+                alt="PlantLanta Logo"
+                src="/plantlanta_logo.png"
+                width="50"
+                height="50"
+                className="d-inline-block align-top"
+                />
+            </Navbar.Brand>
 
             <Nav className="mr-auto">
             </Nav>
@@ -36,7 +37,7 @@ class NavBar extends React.Component{
               <Nav.Link href="/loginpage">Login</Nav.Link>
             </Nav>
 
-
+          </Navbar.Collapse>
         </Navbar>
       </div>
     );
