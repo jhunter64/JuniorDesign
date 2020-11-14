@@ -8,3 +8,23 @@
 .text {
   color: black;
 }
+
+.update-textbox {
+  color: black;
+  resize: none;
+}
+
+.update-modal {
+  position: fixed;
+  width: 80%;
+  max-width: 80%;
+  height: 100%;
+  top: 0%;
+  left: 10%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.text-modal {
+  color: black;
+}
