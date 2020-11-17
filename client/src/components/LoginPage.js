@@ -41,7 +41,7 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        if (this.state.isLoggedIn) {
+        if (this.state.isLoggedIn == 'true') {
             console.log(this.state.isLoggedIn);
             console.log(sessionStorage.getItem('isLoggedIn'));
             if (this.state.isAdmin) {
@@ -49,7 +49,7 @@ class LoginPage extends React.Component {
                     <div>
                         <Jumbotron>
                         <h2 className = "text" align="left">Successfully Logged In As Admin</h2>
-                        <a href="/"><h5 className="link">Sign Out</h5></a>
+                        <button onClick={this.logOut}><h5 className="link">Sign Out</h5></button>
                         </Jumbotron>
                     </div>
                 );
@@ -58,7 +58,7 @@ class LoginPage extends React.Component {
                     <div>
                         <Jumbotron>
                         <h2 className = "text" align="left">Successfully Logged In</h2>
-                        <a href="/"><h5 className="link">Sign Out</h5></a>
+                        <button onClick={this.logOut}><h5 className="link">Sign Out</h5></button>
                         </Jumbotron>
                     </div>
                 );
@@ -116,7 +116,7 @@ class LoginPage extends React.Component {
                 }
                 console.log('NO ERROR');
                 sessionStorage.setItem('isLoggedIn', true);
-                // window.location = '/';
+                window.location = '/';
             }).catch((error) => {
                 this.loginFail();
                 console.log(error);
@@ -155,6 +155,12 @@ class LoginPage extends React.Component {
             isLoggedIn: false,
             failedLogin: true
         });
+    }
+
+    logOut() {
+        sessionStorage.setItem('isLoggedIn', false);
+        console.log(sessionStorage.getItem('isLoggedIn'));
+        window.location.reload();
     }
 }
 
