@@ -1,0 +1,26 @@
+.card {
+  background: rgba(234, 236, 239, .5);
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.name {
+  color: black;
+  font-size: 18px;
+}
+
+[data-initials]:before {
+background: #00b33c;
+color: white;
+opacity: 1; 
+content: attr(data-initials); 
+display: inline-block; 
+border-radius: 50%; 
+vertical-align: middle; 
+margin-right: 0.5em; 
+width: 60px; 
+height: 60px; 
+line-height: 60px; 
+text-align: center; 
+}

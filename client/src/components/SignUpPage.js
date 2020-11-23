@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/SignUpPage.css'
 import axios from 'axios'
 
-
 class SignUpPage extends React.Component{
   constructor(props) {
     super(props);
@@ -92,12 +91,17 @@ class SignUpPage extends React.Component{
           </Form.Row>
 
           
+          <Form.Label for="newsletterCheck">Sign up for newsletter:</Form.Label>
+          <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css"/>
+          <div id="mc_embed_signup">
+          <form action="https://gmail.us2.list-manage.com/subscribe/post?u=b1f47867a96dc04f059a83a6c&amp;id=52e0241610" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+              <div class="clear"><input type="submit" value="Subscribe!" name="subscribe" id="mc-embedded-subscribe" class="button"/></div>
+              </div>
+          </form>
+          </div>
 
-          <Form.Group controlId="newsletter">
-            <input id="newsletterCheck" type="checkbox"/>
-            &nbsp;
-            <Form.Label for="newsletterCheck">Sign up for newsletter</Form.Label>
-          </Form.Group>
+          
 
           <Button variant="light" type="submit">
             Submit
@@ -105,6 +109,8 @@ class SignUpPage extends React.Component{
         </Form>
         <br/> <br/>
       </div>
+
+      
     );
   }
 

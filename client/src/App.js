@@ -9,6 +9,7 @@ import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import Volunteer from './components/Volunteer';
 import SignUpConfirmation from './components/SignUpConfirmation';
+import ProfilePage from './components/ProfilePage';
 import Donate from './components/Donate';
 import NewEvent from './components/NewEvent'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -42,6 +43,9 @@ class App extends Component {
                         </Route>
                         <Route path="/volunteer" component={Volunteer}>
                             <Volunteer/>
+                        </Route>
+                        <Route path="/profilepage" component={ProfilePage}>
+                            <ProfilePage/>
                         </Route>
                         <Route path='/signupconfirmation'>
                             <SignUpConfirmation/>
