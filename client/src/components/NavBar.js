@@ -10,7 +10,7 @@ class NavBar extends React.Component{
 
 
     return (
-      <div class="container">
+      <div className="container">
         <Navbar className = "nav" bg="white" expand="lg" fixed="top">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

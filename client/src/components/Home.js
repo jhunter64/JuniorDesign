@@ -6,6 +6,8 @@ import axios from 'axios'
 
 
 
+
+
 class Home extends React.Component {
 
     constructor(props) {
@@ -36,8 +38,8 @@ class Home extends React.Component {
               <Jumbotron>
                 <Button variant="info" onClick={() => this.handleShow()}>Edit</Button>
                 <br></br><br></br>
-                <h2 className = "text" align="left">Our Mission</h2>
-                <p className = "text" align="left">
+                <h2 className = "text" align="center">Our Mission</h2>
+                <p className = "text" align="center">
                   {this.state.text}
                 </p>
                 <p>
@@ -61,12 +63,12 @@ class Home extends React.Component {
         } else {
           return (
             <Jumbotron>
-              <h2 className = "text" align="left">Our Mission</h2>
-              <p className = "text" align="left">
+              <h2 className = "text" align="center">Our Mission</h2>
+              <p className = "text" align="center">
                 {this.state.text}
               </p>
               <p>
-                <a href="/aboutus"><Button variant="primary">Learn more</Button></a>
+                <a href="/aboutus"><Button variant="primary" style = {{color:'yellow'}}>Learn more</Button></a>
                 <br></br><br></br>
               </p>
             </Jumbotron>

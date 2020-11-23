@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Jumbotron, Button } from 'react-bootstrap';
+import { Modal, Jumbotron, Button, Collapse } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/AboutUs.css';
 import axios from 'axios'
@@ -15,7 +15,7 @@ class AboutUs extends React.Component {
           missionText: '',
           historyText: '',
           staffText: '',
-          cols: ''
+          cols: '',
         };
         window.addEventListener("resize", this.update);
     }
@@ -60,8 +60,8 @@ class AboutUs extends React.Component {
           <Jumbotron>
           <Button variant="info" onClick={() => this.handleShow()}>Edit</Button>
           <br></br><br></br>
-          <h2 className = "text" align="left">Our Mission</h2>
-          <p className = "text" align="left">
+          <h2 className = "text" align="center">Our Mission</h2>
+          <p className = "text" align="center">
               {this.state.missionText}
           </p>
           <Modal show={this.state.show} onHide={() => this.handleClose()} dialogClassName="aboutus-modal" backdrop="static" keyboard="true">
@@ -100,11 +100,13 @@ class AboutUs extends React.Component {
         return (
             <div>
             <Jumbotron>
-            <h2 className = "text" align="left">Our Mission</h2>
-            <p className = "text" align="left">
+            <h2 className = "text" align="center">Our Mission</h2>
+            <p className = "text" align="center">
               {this.state.missionText} </p>
             </Jumbotron>
             <br/><br/>
+
+            {/* This lets you click and expand components */}
             <h2>Our History</h2>
             <p> {this.state.historyText} </p>
             <h2>Our Staff</h2>
@@ -161,6 +163,7 @@ class AboutUs extends React.Component {
         show: true
       });
     }
+
 
     update = () => {
       var width = window.innerWidth;

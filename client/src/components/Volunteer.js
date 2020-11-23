@@ -11,7 +11,6 @@ class Volunteer extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      //this is where the API call would go instead of this list
       events: []
     }; 
 
