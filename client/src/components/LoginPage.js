@@ -21,6 +21,9 @@ const onSuccess = (res) => {
         return response.json();
       }).then(function(data) {
         console.log(data);
+        var userId = data._id;
+        sessionStorage.setItem('userID', userId);
+        console.log(userId);
         if (!data || data == undefined || !data._id) {
             var newUser = {
                 firstName: googleUser.givenName,
@@ -35,12 +38,20 @@ const onSuccess = (res) => {
             axios.post('http://localhost:9000/users/', newUser)
                 .then(function() {
                     console.log('New user created');
+                    fetch(loginURL).then(function(response) {
+                        return response.json();
+                    }).then(function(data) {
+                        console.log(data);
+                        var userId = data._id;
+                        sessionStorage.setItem('userID', userId);
+                        console.log(userId);
+                    });
                 }).catch(function(error) {
                     console.log(error);
                 });
         }
       });
-    window.location.reload();
+    // window.location.reload();
     refreshTokenSetup(res);
 };
   
