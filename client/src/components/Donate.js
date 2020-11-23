@@ -18,9 +18,24 @@ class Donate extends React.Component{
       <div>
         <Jumbotron>
           <h1 className='text' align='center'>Donate</h1>
-        </Jumbotron>
+          <p className='text'> We appreciate your support. We have an opportunity to donate, safely and securily in PayPal. We hope that you will take this opporutinity to consider supporting our organization financially</p>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+            <input type="hidden" name="business" value="donations@kcparkfriends.org"/>
+
+            <input type="hidden" name="cmd" value="_donations"/>
+
+            <input type="hidden" name="item_name" value="Friends of the Park"/>
+            <input type="hidden" name="item_number" value="Fall Cleanup Campaign"/>
+            <input type="hidden" name="amount" value="25.00"/>
+            <input type="hidden" name="currency_code" value="USD"/>
+
+            <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate"/>
+            <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"/>
+        </form>
+        <br/><br/>
         <Button variant="primary" onClick={() => this.handleShow()}>Donate as Organization</Button>
-        <Modal show={this.state.show} onHide={() => this.handleClose()} className="modal" size="lg">
+        <Modal show={this.state.show} onHide={() => this.handleClose()} dialogClassName="donate-modal" size="lg">
           <Modal.Header className="header" closeButton>
             <Modal.Title className="text-modal">Donate as Organization</Modal.Title>
           </Modal.Header>
@@ -38,6 +53,7 @@ class Donate extends React.Component{
             <Button variant="secondary" onClick={() => this.handleClose()}>Close</Button>
           </Modal.Footer>
         </Modal>
+      </Jumbotron>
       </div>
     );
 }
