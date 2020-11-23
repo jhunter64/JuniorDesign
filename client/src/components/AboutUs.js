@@ -11,7 +11,9 @@ class AboutUs extends React.Component {
         super(props);
         this.state = {
           events: "",
-          show: false,
+          missionShow: false,
+          historyShow: false,
+          staffShow: false,
           missionText: '',
           historyText: '',
           staffText: '',
@@ -58,38 +60,59 @@ class AboutUs extends React.Component {
         return (
           <div>
           <Jumbotron>
-          <Button variant="info" onClick={() => this.handleShow()}>Edit</Button>
+          <Button variant="info" onClick={() => this.handleShow(0)}>Edit Mission</Button>
           <br></br><br></br>
           <h2 className = "text" align="left">Our Mission</h2>
           <p className = "text" align="left">
               {this.state.missionText}
           </p>
-          <Modal show={this.state.show} onHide={() => this.handleClose()} dialogClassName="aboutus-modal" backdrop="static" keyboard="true">
+          <Modal show={this.state.missionShow} onHide={() => this.handleClose(0)} dialogClassName="aboutus-modal" backdrop="static" keyboard="true">
             <Modal.Header closeButton>
               <Modal.Title className="text-modal">Edit Information</Modal.Title>
             </Modal.Header>
-            <Modal.Body className="text-modal">You can only make changes to one section at a time, so make sure to save your changes when you're done editing a section!<br></br><br></br>
+            <Modal.Body className="text-modal">
               To edit the Mission Statement information, make changes to the text in the box below:<br></br><br></br>
               <textarea id="mission-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.missionText}</textarea>
-              <Button variant="secondary" onClick={() => this.handleSave(0)}>Save Changes</Button>
-              <br></br><br></br>
-              To edit the History information, make changes to the text in the box below:<br></br><br></br>
-              <textarea id="history-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.historyText}</textarea>
-              <Button variant="secondary" onClick={() => this.handleSave(1)}>Save Changes</Button>
-              <br></br><br></br>
-              To edit the Staff information, make changes to the text in the box below:<br></br><br></br>
-              <textarea id="staff-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.staffText}</textarea>
-              <Button variant="secondary" onClick={() => this.handleSave(2)}>Save Changes</Button>
-              <br></br><br></br>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={() => this.handleClose()}>Discard Changes</Button>
+              <Button variant="secondary" onClick={() => this.handleSave(0)}>Save Changes</Button>
+              <Button variant="secondary" onClick={() => this.handleClose(0)}>Discard Changes</Button>
+            </Modal.Footer>
+          </Modal>
+
+          <Modal show={this.state.historyShow} onHide={() => this.handleClose(1)} dialogClassName="aboutus-modal" backdrop="static" keyboard="true">
+            <Modal.Header closeButton>
+              <Modal.Title className="text-modal">Edit Information</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="text-modal">
+              To edit the History information, make changes to the text in the box below:<br></br><br></br>
+              <textarea id="history-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.historyText}</textarea>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => this.handleSave(1)}>Save Changes</Button>
+              <Button variant="secondary" onClick={() => this.handleClose(1)}>Discard Changes</Button>
+            </Modal.Footer>
+          </Modal>
+
+          <Modal show={this.state.staffShow} onHide={() => this.handleClose(2)} dialogClassName="aboutus-modal" backdrop="static" keyboard="true">
+            <Modal.Header closeButton>
+              <Modal.Title className="text-modal">Edit Information</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="text-modal">
+              To edit the Staff information, make changes to the text in the box below:<br></br><br></br>
+              <textarea id="staff-textbox" className="update-textbox" rows="5" cols={this.state.cols}>{this.state.staffText}</textarea>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => this.handleSave(2)}>Save Changes</Button>
+              <Button variant="secondary" onClick={() => this.handleClose(2)}>Discard Changes</Button>
             </Modal.Footer>
           </Modal>
           </Jumbotron>
           <br/><br/>
+          <Button variant="info" onClick={() => this.handleShow(1)}>Edit History</Button>
           <h2>Our History</h2>
           <p> {this.state.historyText} </p>
+          <Button variant="info" onClick={() => this.handleShow(2)}>Edit Staff</Button>
           <h2>Our Staff</h2>
           <p> {this.state.staffText} </p>
           <h2>Our Events</h2>
@@ -150,21 +173,41 @@ class AboutUs extends React.Component {
       }
     }
 
-    handleClose() {
-      this.setState({
-        show: false
-      });
+    handleClose(num) {
+      if (num == 0) {
+        this.setState({
+          missionShow: false
+        });
+      } else if (num == 1) {
+        this.setState({
+          historyShow: false
+        });
+      } else if (num == 2) {
+        this.setState({
+          staffShow: false
+        });
+      }
     }
 
-    handleShow() {
-      this.setState({
-        show: true
-      });
+    handleShow(num) {
+      if (num == 0) {
+        this.setState({
+          missionShow: true
+        });
+      } else if (num == 1) {
+        this.setState({
+          historyShow: true
+        });
+      } else if (num == 2) {
+        this.setState({
+          staffShow: true
+        });
+      }
     }
 
     update = () => {
       var width = window.innerWidth;
-      width = (width * 0.096);
+      width = (width * 0.1);
       this.setState({
         cols: width
       })

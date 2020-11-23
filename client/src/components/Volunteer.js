@@ -40,7 +40,7 @@ class Volunteer extends React.Component{
 
     return (
       <div>
-        <h2 className = "text" align="center">Upcoming Events</h2>
+        <h2 className = "text" align="center"><br></br>Upcoming Events</h2>
         <br />
         {event_cards}
 
