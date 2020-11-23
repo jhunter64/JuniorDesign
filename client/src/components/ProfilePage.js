@@ -14,10 +14,10 @@ class ProfilePage extends React.Component{
       password: "",
       firstName: "",
       lastName: "",
-      phoneNumber: "",
-      birthdayDay: "",
-      birthdayMonth: "",
-      birthdayYear: ""
+      phoneNumber: "1234567890",
+      birthdayDay: "0",
+      birthdayMonth: "0",
+      birthdayYear: "0"
     };
   }
 
