@@ -42,21 +42,6 @@ class Volunteer extends React.Component{
       </div>
     ));
 
-    /* const event_cards = []
-    for (let i = 0; i < this.state.events.length; i++) {
-      event_cards.push(
-          <div>
-            <EventCard
-              eventName = {this.state.events[i]["event"]}
-              eventDate = {this.state.events[i]["date"]}
-              eventDescription={this.state.events[i]["description"]}
-              eventLocation={this.state.events[i]["location"]}
-            />
-            <p> </p>
-          </div>
-
-      );
-    } */
 
     if (sessionStorage.getItem('isAdmin')) {
       return (
