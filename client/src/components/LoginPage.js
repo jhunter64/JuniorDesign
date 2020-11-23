@@ -51,7 +51,7 @@ const onSuccess = (res) => {
                 });
         }
       });
-    // window.location.reload();
+    window.location.reload();
     refreshTokenSetup(res);
 };
   
