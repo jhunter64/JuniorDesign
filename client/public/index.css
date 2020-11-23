@@ -5,6 +5,9 @@ body {
 	color: white;
 	background-attachment: fixed;
 	padding-top: 10%;
+	height: 100vh;
+	background-position: center;
+	background-size: cover;
 }
 
 * {

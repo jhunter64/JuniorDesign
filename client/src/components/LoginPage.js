@@ -138,10 +138,11 @@ class LoginPage extends React.Component {
                     sessionStorage.setItem('isAdmin', true);
                 } else {
                     sessionStorage.setItem('isAdmin', false);
+                    sessionStorage.setItem('userID', res.data._id);
                 }
                 console.log('NO ERROR');
                 sessionStorage.setItem('isLoggedIn', true);
-                window.location = '/';
+                // window.location = '/';
             }).catch((error) => {
                 this.loginFail();
                 console.log(error);

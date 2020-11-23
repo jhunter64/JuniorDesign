@@ -23,28 +23,16 @@ class ContactUs extends React.Component{
 
           <br/><br/>
           <h6 className ="text"> Join our mailing list:</h6>
-
-          <Form>	          
-          	<Form.Group controlId="email">
-	            <div class="form-inline">
-	            	<div class="mx-auto">
-		            	<Form.Control size="sm" type="text" class="form-control mr-1" id="inlineFormInputEmail" placeholder="email@email.com" />
-				         	<Button variant="dark" type="submit" size="sm" class="btn btn-primary">
-				            Join
-				          </Button>
-			          </div>
-			        </div>
-		        </Form.Group>
-          </Form>
 					
-
-
-
-
-          
-    
-
-
+        
+          <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css"/>
+          <div id="mc_embed_signup">
+          <form action="https://gmail.us2.list-manage.com/subscribe/post?u=b1f47867a96dc04f059a83a6c&amp;id=52e0241610" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+              <div class="clear"><input type="submit" value="Subscribe!" name="subscribe" id="mc-embedded-subscribe" class="button"/></div>
+              </div>
+          </form>
+          </div>
 
         </div>
       </div>
