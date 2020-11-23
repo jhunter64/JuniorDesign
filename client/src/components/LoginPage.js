@@ -15,6 +15,31 @@ const clientSecret = 'oLQn8p-irej6EXhw7wuuZbrr';
 const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
     sessionStorage.setItem('isLoggedIn', true);
+    var loginURL = 'http://localhost:9000/users/googleLogin/' + res.profileObj.email;
+    var googleUser = res.profileObj;
+    fetch(loginURL).then(function(response) {
+        return response.json();
+      }).then(function(data) {
+        console.log(data);
+        if (!data || data == undefined || !data._id) {
+            var newUser = {
+                firstName: googleUser.givenName,
+                lastName: googleUser.familyName,
+                email: googleUser.email,
+                password: '',
+                phoneNumber: '',
+                birthdayDay: '',
+                birthdayMonth: '',
+                birthdayYear: ''
+              }
+            axios.post('http://localhost:9000/users/', newUser)
+                .then(function() {
+                    console.log('New user created');
+                }).catch(function(error) {
+                    console.log(error);
+                });
+        }
+      });
     window.location.reload();
     refreshTokenSetup(res);
 };

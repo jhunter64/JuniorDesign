@@ -61,6 +61,40 @@ router.get("/:userId/", function(req, res) {
     });
 });
 
+router.get("/googleLogin/:email/", function(req, res) {
+    console.log('getting one user');
+    MongoClient.connect(uri, { useNewUrlParser: true }, {useUnifiedTopology: true }, function(err, client) {
+        if (err) {
+            console.log('ERROR CONNECTING TO MONGO');
+            res.send(404);
+        } else {
+            var db = client.db('PlantLanta');
+            var collection = db.collection('Users');
+            var email = req.params.email;
+            try {
+                collection.findOne({email: email}, function(err, result) {
+                    console.log(result);
+                    if (err) {
+                        console.log(err);
+                        throw err;
+                    } else if (result) {
+                        console.log('Matching Google user found--sending to frontend');
+                        res.send(result);
+                    } else {
+                        console.log('No matching Google user found');
+                        res.send({});
+                    }
+                });
+            } catch (err) {
+                console.log('error creating MongoDB ObjectId');
+                console.log(err);
+                res.send(404);
+            }
+            client.close();
+        }
+    });
+});
+
 
 router.post("/logIn/", function(req, res) {
     MongoClient.connect(uri, { useNewUrlParser: true }, {useUnifiedTopology: true }, function(err, client) {
