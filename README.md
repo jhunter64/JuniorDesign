@@ -48,9 +48,9 @@ Below, you will find all necessary information about the delivery process of thi
 	> 3. In one terminal, execute `cd server`
 	> 4. In that same terminal, execute `npm start`
 	> 5. In the  other terminal, execute `cd client`
-	> 6. In that same terminal, execute `npm start`
-	**Now you have `npm start` running in the server terminal and client terminal**
+	> 6. In that same terminal, execute `npm start`\
+	> **Now you have `npm start` running in the server terminal and client terminal**
 	> 7. This should automatically open a tab in a browser with the site running, but if not, **you can open a tab in a browser and enter localhost:3000 as the URL**
 - Troubleshooting
-	> The most common error is a package not being installed, which **can be fixed by executing `npm install` in a project directory terminal window**
+	> The most common error is a package not being installed, which **can be fixed by executing `npm install` in a project directory terminal window.**\
 	> Another potential error is trying to access the site before the client and server are fully running, so try to **wait a few seconds after executing the two `npm start` commands before manually opening the site URL**
